@@ -35,7 +35,7 @@ future: _initialisation,
       }
 
       if(snapshot.connectionState == ConnectionState.done){
-        return HomePage();
+        return const HomePage();
       }
 
       return const Center(child:CircularProgressIndicator());

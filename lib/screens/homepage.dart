@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomePage extends StatelessWidget{
-CollectionReference player = FirebaseFirestore.instance.collection('Player');
-String textNote = ' ';
-  HomePage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-           TextField(
-             onChanged: (value){
-               textNote = value;
-             },
-            decoration: const InputDecoration(
-              hintText: 'Enter Player Name'
-            ),
-          ),
-          ElevatedButton(onPressed: () async{
-            await player.add({
-              'firstName': 'Dhawan',
-              'age': 38
-            }).then((value) => print('player added'));
-          },
-              child: Text('Enter'))
-        ],
-      )
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+        title: const Text("Sports App"),
+      ),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('Player').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          return ListView(
+            children: snapshot.data!.docs.map((document) {
+              return Container(
+                child: Center(child: Text(document['firstName'])),
+              );
+            }).toList(),
+          );
+        },
+      ),
     );
   }
 }
