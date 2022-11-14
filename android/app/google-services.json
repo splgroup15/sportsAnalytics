@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "107140515241",
+    "project_id": "sports-analytics-group15-spl",
+    "storage_bucket": "sports-analytics-group15-spl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107140515241:android:6cdce3f00bdabc0684b0b8",
+        "android_client_info": {
+          "package_name": "com.example.sports_flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107140515241-67n868c3g89nqiapgodh23irnfmhcolq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv5iGjiToxcSA1g1pA_ERIc5TSVJU5sDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107140515241-67n868c3g89nqiapgodh23irnfmhcolq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "107140515241-m5nn2h7rq6ttadte6sdbovvocud777kq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sportsFlutterApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

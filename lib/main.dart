@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sports_flutter_app/screens/homepage.dart';
+import 'package:sports_flutter_app/screens/Homepage.dart';
+import 'package:sports_flutter_app/screens/Landingpage.dart';
+import 'package:sports_flutter_app/screens/Signinpage.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -17,7 +19,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+        theme: ThemeData.light(),
+        darkTheme: ThemeData.dark(),
       home: RootSportWidget()
+
     );
   }
 }
@@ -35,7 +40,7 @@ future: _initialisation,
       }
 
       if(snapshot.connectionState == ConnectionState.done){
-        return const HomePage();
+        return const SignInScreen();
       }
 
       return const Center(child:CircularProgressIndicator());

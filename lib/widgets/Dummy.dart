@@ -1,18 +1,19 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class teamDetails extends StatelessWidget {
+  final String teamID;
+  const teamDetails({super.key, required this.teamID});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        title: const Text("Sports App"),
+        title: Text("Team $teamID Details"),
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('Player').snapshots(),
+        stream: FirebaseFirestore.instance.collection('Player').where('Team_ID', isEqualTo: teamID).snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
             return const Center(
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
           return ListView(
             children: snapshot.data!.docs.map((document) {
               return Container(
-                child: Center(child: Text(document['firstName'])),
+                child: Center(child: Text(document['FullName'])),
               );
             }).toList(),
           );
